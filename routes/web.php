@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Actions\UpdateUserName;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +21,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // UpdateUserName::run(User::find(1), 'admin2');
     return view('welcome');
 });
+
+Route::get('/update/user' , UpdateUserName::class)->name('update.user');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
